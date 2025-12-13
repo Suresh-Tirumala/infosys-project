@@ -1,0 +1,3120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">,.
+    <title>Wellness Chatbot - Premium Edition</title>
+    <meta name="description" content="Your ultra-premium personal wellness assistant">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+<style>
+:root {
+  /* Primitive Color Tokens */
+  --color-white: rgba(255, 255, 255, 1);
+  --color-black: rgba(0, 0, 0, 1);
+  --color-cream-50: rgba(252, 252, 249, 1);
+  --color-cream-100: rgba(255, 255, 253, 1);
+  --color-gray-200: rgba(245, 245, 245, 1);
+  --color-gray-300: rgba(167, 169, 169, 1);
+  --color-gray-400: rgba(119, 124, 124, 1);
+  --color-slate-500: rgba(98, 108, 113, 1);
+  --color-brown-600: rgba(94, 82, 64, 1);
+  --color-charcoal-700: rgba(31, 33, 33, 1);
+  --color-charcoal-800: rgba(38, 40, 40, 1);
+  --color-slate-900: rgba(19, 52, 59, 1);
+  --color-teal-300: rgba(50, 184, 198, 1);
+  --color-teal-400: rgba(45, 166, 178, 1);
+  --color-teal-500: rgba(33, 128, 141, 1);
+  --color-teal-600: rgba(29, 116, 128, 1);
+  --color-teal-700: rgba(26, 104, 115, 1);
+  --color-teal-800: rgba(41, 150, 161, 1);
+  --color-red-400: rgba(255, 84, 89, 1);
+  --color-red-500: rgba(192, 21, 47, 1);
+  --color-orange-400: rgba(230, 129, 97, 1);
+  --color-orange-500: rgba(168, 75, 47, 1);
+
+  /* RGB versions for opacity control */
+  --color-brown-600-rgb: 94, 82, 64;
+  --color-teal-500-rgb: 33, 128, 141;
+  --color-slate-900-rgb: 19, 52, 59;
+  --color-slate-500-rgb: 98, 108, 113;
+  --color-red-500-rgb: 192, 21, 47;
+  --color-red-400-rgb: 255, 84, 89;
+  --color-orange-500-rgb: 168, 75, 47;
+  --color-orange-400-rgb: 230, 129, 97;
+
+  /* Background color tokens (Light Mode) */
+  --color-bg-1: rgba(59, 130, 246, 0.08); /* Light blue */
+  --color-bg-2: rgba(245, 158, 11, 0.08); /* Light yellow */
+  --color-bg-3: rgba(34, 197, 94, 0.08); /* Light green */
+  --color-bg-4: rgba(239, 68, 68, 0.08); /* Light red */
+  --color-bg-5: rgba(147, 51, 234, 0.08); /* Light purple */
+  --color-bg-6: rgba(249, 115, 22, 0.08); /* Light orange */
+  --color-bg-7: rgba(236, 72, 153, 0.08); /* Light pink */
+  --color-bg-8: rgba(6, 182, 212, 0.08); /* Light cyan */
+
+  /* Semantic Color Tokens (Light Mode) */
+  --color-background: var(--color-cream-50);
+  --color-surface: var(--color-cream-100);
+  --color-text: var(--color-slate-900);
+  --color-text-secondary: var(--color-slate-500);
+  --color-primary: var(--color-teal-500);
+  --color-primary-hover: var(--color-teal-600);
+  --color-primary-active: var(--color-teal-700);
+  --color-secondary: rgba(var(--color-brown-600-rgb), 0.12);
+  --color-secondary-hover: rgba(var(--color-brown-600-rgb), 0.2);
+  --color-secondary-active: rgba(var(--color-brown-600-rgb), 0.25);
+  --color-border: rgba(var(--color-brown-600-rgb), 0.2);
+  --color-btn-primary-text: var(--color-cream-50);
+  --color-card-border: rgba(var(--color-brown-600-rgb), 0.12);
+  --color-card-border-inner: rgba(var(--color-brown-600-rgb), 0.12);
+  --color-error: var(--color-red-500);
+  --color-success: var(--color-teal-500);
+  --color-warning: var(--color-orange-500);
+  --color-info: var(--color-slate-500);
+  --color-focus-ring: rgba(var(--color-teal-500-rgb), 0.4);
+  --color-select-caret: rgba(var(--color-slate-900-rgb), 0.8);
+
+  /* Common style patterns */
+  --focus-ring: 0 0 0 3px var(--color-focus-ring);
+  --focus-outline: 2px solid var(--color-primary);
+  --status-bg-opacity: 0.15;
+  --status-border-opacity: 0.25;
+  --select-caret-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23134252' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  --select-caret-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23f5f5f5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+
+  /* RGB versions for opacity control */
+  --color-success-rgb: 33, 128, 141;
+  --color-error-rgb: 192, 21, 47;
+  --color-warning-rgb: 168, 75, 47;
+  --color-info-rgb: 98, 108, 113;
+
+  /* Typography */
+  --font-family-base: "FKGroteskNeue", "Geist", "Inter", -apple-system,
+    BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-family-mono: "Berkeley Mono", ui-monospace, SFMono-Regular, Menlo,
+    Monaco, Consolas, monospace;
+  --font-size-xs: 11px;
+  --font-size-sm: 12px;
+  --font-size-base: 14px;
+  --font-size-md: 14px;
+  --font-size-lg: 16px;
+  --font-size-xl: 18px;
+  --font-size-2xl: 20px;
+  --font-size-3xl: 24px;
+  --font-size-4xl: 30px;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 550;
+  --font-weight-bold: 600;
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+  --letter-spacing-tight: -0.01em;
+
+  /* Spacing */
+  --space-0: 0;
+  --space-1: 1px;
+  --space-2: 2px;
+  --space-4: 4px;
+  --space-6: 6px;
+  --space-8: 8px;
+  --space-10: 10px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-20: 20px;
+  --space-24: 24px;
+  --space-32: 32px;
+
+  /* Border Radius */
+  --radius-sm: 6px;
+  --radius-base: 8px;
+  --radius-md: 10px;
+  --radius-lg: 12px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.02);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.04),
+    0 2px 4px -1px rgba(0, 0, 0, 0.02);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.04),
+    0 4px 6px -2px rgba(0, 0, 0, 0.02);
+  --shadow-inset-sm: inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.03);
+
+  /* Animation */
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --ease-standard: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Layout */
+  --container-sm: 640px;
+  --container-md: 768px;
+  --container-lg: 1024px;
+  --container-xl: 1280px;
+}
+
+/* Dark mode colors */
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* RGB versions for opacity control (Dark Mode) */
+    --color-gray-400-rgb: 119, 124, 124;
+    --color-teal-300-rgb: 50, 184, 198;
+    --color-gray-300-rgb: 167, 169, 169;
+    --color-gray-200-rgb: 245, 245, 245;
+
+    /* Background color tokens (Dark Mode) */
+    --color-bg-1: rgba(29, 78, 216, 0.15); /* Dark blue */
+    --color-bg-2: rgba(180, 83, 9, 0.15); /* Dark yellow */
+    --color-bg-3: rgba(21, 128, 61, 0.15); /* Dark green */
+    --color-bg-4: rgba(185, 28, 28, 0.15); /* Dark red */
+    --color-bg-5: rgba(107, 33, 168, 0.15); /* Dark purple */
+    --color-bg-6: rgba(194, 65, 12, 0.15); /* Dark orange */
+    --color-bg-7: rgba(190, 24, 93, 0.15); /* Dark pink */
+    --color-bg-8: rgba(8, 145, 178, 0.15); /* Dark cyan */
+
+    /* Semantic Color Tokens (Dark Mode) */
+    --color-background: var(--color-charcoal-700);
+    --color-surface: var(--color-charcoal-800);
+    --color-text: var(--color-gray-200);
+    --color-text-secondary: rgba(var(--color-gray-300-rgb), 0.7);
+    --color-primary: var(--color-teal-300);
+    --color-primary-hover: var(--color-teal-400);
+    --color-primary-active: var(--color-teal-800);
+    --color-secondary: rgba(var(--color-gray-400-rgb), 0.15);
+    --color-secondary-hover: rgba(var(--color-gray-400-rgb), 0.25);
+    --color-secondary-active: rgba(var(--color-gray-400-rgb), 0.3);
+    --color-border: rgba(var(--color-gray-400-rgb), 0.3);
+    --color-error: var(--color-red-400);
+    --color-success: var(--color-teal-300);
+    --color-warning: var(--color-orange-400);
+    --color-info: var(--color-gray-300);
+    --color-focus-ring: rgba(var(--color-teal-300-rgb), 0.4);
+    --color-btn-primary-text: var(--color-slate-900);
+    --color-card-border: rgba(var(--color-gray-400-rgb), 0.2);
+    --color-card-border-inner: rgba(var(--color-gray-400-rgb), 0.15);
+    --shadow-inset-sm: inset 0 1px 0 rgba(255, 255, 255, 0.1),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+    --button-border-secondary: rgba(var(--color-gray-400-rgb), 0.2);
+    --color-border-secondary: rgba(var(--color-gray-400-rgb), 0.2);
+    --color-select-caret: rgba(var(--color-gray-200-rgb), 0.8);
+
+    /* Common style patterns - updated for dark mode */
+    --focus-ring: 0 0 0 3px var(--color-focus-ring);
+    --focus-outline: 2px solid var(--color-primary);
+    --status-bg-opacity: 0.15;
+    --status-border-opacity: 0.25;
+    --select-caret-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23134252' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    --select-caret-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23f5f5f5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+
+    /* RGB versions for dark mode */
+    --color-success-rgb: var(--color-teal-300-rgb);
+    --color-error-rgb: var(--color-red-400-rgb);
+    --color-warning-rgb: var(--color-orange-400-rgb);
+    --color-info-rgb: var(--color-gray-300-rgb);
+  }
+}
+
+/* Data attribute for manual theme switching */
+[data-color-scheme="dark"] {
+  /* RGB versions for opacity control (dark mode) */
+  --color-gray-400-rgb: 119, 124, 124;
+  --color-teal-300-rgb: 50, 184, 198;
+  --color-gray-300-rgb: 167, 169, 169;
+  --color-gray-200-rgb: 245, 245, 245;
+
+  /* Colorful background palette - Dark Mode */
+  --color-bg-1: rgba(29, 78, 216, 0.15); /* Dark blue */
+  --color-bg-2: rgba(180, 83, 9, 0.15); /* Dark yellow */
+  --color-bg-3: rgba(21, 128, 61, 0.15); /* Dark green */
+  --color-bg-4: rgba(185, 28, 28, 0.15); /* Dark red */
+  --color-bg-5: rgba(107, 33, 168, 0.15); /* Dark purple */
+  --color-bg-6: rgba(194, 65, 12, 0.15); /* Dark orange */
+  --color-bg-7: rgba(190, 24, 93, 0.15); /* Dark pink */
+  --color-bg-8: rgba(8, 145, 178, 0.15); /* Dark cyan */
+
+  /* Semantic Color Tokens (Dark Mode) */
+  --color-background: var(--color-charcoal-700);
+  --color-surface: var(--color-charcoal-800);
+  --color-text: var(--color-gray-200);
+  --color-text-secondary: rgba(var(--color-gray-300-rgb), 0.7);
+  --color-primary: var(--color-teal-300);
+  --color-primary-hover: var(--color-teal-400);
+  --color-primary-active: var(--color-teal-800);
+  --color-secondary: rgba(var(--color-gray-400-rgb), 0.15);
+  --color-secondary-hover: rgba(var(--color-gray-400-rgb), 0.25);
+  --color-secondary-active: rgba(var(--color-gray-400-rgb), 0.3);
+  --color-border: rgba(var(--color-gray-400-rgb), 0.3);
+  --color-error: var(--color-red-400);
+  --color-success: var(--color-teal-300);
+  --color-warning: var(--color-orange-400);
+  --color-info: var(--color-gray-300);
+  --color-focus-ring: rgba(var(--color-teal-300-rgb), 0.4);
+  --color-btn-primary-text: var(--color-slate-900);
+  --color-card-border: rgba(var(--color-gray-400-rgb), 0.15);
+  --color-card-border-inner: rgba(var(--color-gray-400-rgb), 0.15);
+  --shadow-inset-sm: inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+  --color-border-secondary: rgba(var(--color-gray-400-rgb), 0.2);
+  --color-select-caret: rgba(var(--color-gray-200-rgb), 0.8);
+
+  /* Common style patterns - updated for dark mode */
+  --focus-ring: 0 0 0 3px var(--color-focus-ring);
+  --focus-outline: 2px solid var(--color-primary);
+  --status-bg-opacity: 0.15;
+  --status-border-opacity: 0.25;
+  --select-caret-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23134252' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  --select-caret-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23f5f5f5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+
+  /* RGB versions for dark mode */
+  --color-success-rgb: var(--color-teal-300-rgb);
+  --color-error-rgb: var(--color-red-400-rgb);
+  --color-warning-rgb: var(--color-orange-400-rgb);
+  --color-info-rgb: var(--color-gray-300-rgb);
+}
+
+[data-color-scheme="light"] {
+  /* RGB versions for opacity control (light mode) */
+  --color-brown-600-rgb: 94, 82, 64;
+  --color-teal-500-rgb: 33, 128, 141;
+  --color-slate-900-rgb: 19, 52, 59;
+
+  /* Semantic Color Tokens (Light Mode) */
+  --color-background: var(--color-cream-50);
+  --color-surface: var(--color-cream-100);
+  --color-text: var(--color-slate-900);
+  --color-text-secondary: var(--color-slate-500);
+  --color-primary: var(--color-teal-500);
+  --color-primary-hover: var(--color-teal-600);
+  --color-primary-active: var(--color-teal-700);
+  --color-secondary: rgba(var(--color-brown-600-rgb), 0.12);
+  --color-secondary-hover: rgba(var(--color-brown-600-rgb), 0.2);
+  --color-secondary-active: rgba(var(--color-brown-600-rgb), 0.25);
+  --color-border: rgba(var(--color-brown-600-rgb), 0.2);
+  --color-btn-primary-text: var(--color-cream-50);
+  --color-card-border: rgba(var(--color-brown-600-rgb), 0.12);
+  --color-card-border-inner: rgba(var(--color-brown-600-rgb), 0.12);
+  --color-error: var(--color-red-500);
+  --color-success: var(--color-teal-500);
+  --color-warning: var(--color-orange-500);
+  --color-info: var(--color-slate-500);
+  --color-focus-ring: rgba(var(--color-teal-500-rgb), 0.4);
+
+  /* RGB versions for light mode */
+  --color-success-rgb: var(--color-teal-500-rgb);
+  --color-error-rgb: var(--color-red-500-rgb);
+  --color-warning-rgb: var(--color-orange-500-rgb);
+  --color-info-rgb: var(--color-slate-500-rgb);
+}
+
+/* Base styles */
+html {
+  font-size: var(--font-size-base);
+  font-family: var(--font-family-base);
+  line-height: var(--line-height-normal);
+  color: var(--color-text);
+  background-color: var(--color-background);
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+/* Typography */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-tight);
+  color: var(--color-text);
+  letter-spacing: var(--letter-spacing-tight);
+}
+
+h1 {
+  font-size: var(--font-size-4xl);
+}
+h2 {
+  font-size: var(--font-size-3xl);
+}
+h3 {
+  font-size: var(--font-size-2xl);
+}
+h4 {
+  font-size: var(--font-size-xl);
+}
+h5 {
+  font-size: var(--font-size-lg);
+}
+h6 {
+  font-size: var(--font-size-md);
+}
+
+p {
+  margin: 0 0 var(--space-16) 0;
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color var(--duration-fast) var(--ease-standard);
+}
+
+a:hover {
+  color: var(--color-primary-hover);
+}
+
+code,
+pre {
+  font-family: var(--font-family-mono);
+  font-size: calc(var(--font-size-base) * 0.95);
+  background-color: var(--color-secondary);
+  border-radius: var(--radius-sm);
+}
+
+code {
+  padding: var(--space-1) var(--space-4);
+}
+
+pre {
+  padding: var(--space-16);
+  margin: var(--space-16) 0;
+  overflow: auto;
+  border: 1px solid var(--color-border);
+}
+
+pre code {
+  background: none;
+  padding: 0;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-8) var(--space-16);
+  border-radius: var(--radius-base);
+  font-size: var(--font-size-base);
+  font-weight: 500;
+  line-height: 1.5;
+  cursor: pointer;
+  transition: all var(--duration-normal) var(--ease-standard);
+  border: none;
+  text-decoration: none;
+  position: relative;
+}
+
+.btn:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+.btn--primary {
+  background: var(--color-primary);
+  color: var(--color-btn-primary-text);
+}
+
+.btn--primary:hover {
+  background: var(--color-primary-hover);
+}
+
+.btn--primary:active {
+  background: var(--color-primary-active);
+}
+
+.btn--secondary {
+  background: var(--color-secondary);
+  color: var(--color-text);
+}
+
+.btn--secondary:hover {
+  background: var(--color-secondary-hover);
+}
+
+.btn--secondary:active {
+  background: var(--color-secondary-active);
+}
+
+.btn--outline {
+  background: transparent;
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+}
+
+.btn--outline:hover {
+  background: var(--color-secondary);
+}
+
+.btn--sm {
+  padding: var(--space-4) var(--space-12);
+  font-size: var(--font-size-sm);
+  border-radius: var(--radius-sm);
+}
+
+.btn--lg {
+  padding: var(--space-10) var(--space-20);
+  font-size: var(--font-size-lg);
+  border-radius: var(--radius-md);
+}
+
+.btn--full-width {
+  width: 100%;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Form elements */
+.form-control {
+  display: block;
+  width: 100%;
+  padding: var(--space-8) var(--space-12);
+  font-size: var(--font-size-md);
+  line-height: 1.5;
+  color: var(--color-text);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-base);
+  transition: border-color var(--duration-fast) var(--ease-standard),
+    box-shadow var(--duration-fast) var(--ease-standard);
+}
+
+textarea.form-control {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
+}
+
+select.form-control {
+  padding: var(--space-8) var(--space-12);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: var(--select-caret-light);
+  background-repeat: no-repeat;
+  background-position: right var(--space-12) center;
+  background-size: 16px;
+  padding-right: var(--space-32);
+}
+
+/* Add a dark mode specific caret */
+@media (prefers-color-scheme: dark) {
+  select.form-control {
+    background-image: var(--select-caret-dark);
+  }
+}
+
+/* Also handle data-color-scheme */
+[data-color-scheme="dark"] select.form-control {
+  background-image: var(--select-caret-dark);
+}
+
+[data-color-scheme="light"] select.form-control {
+  background-image: var(--select-caret-light);
+}
+
+.form-control:focus {
+  border-color: var(--color-primary);
+  outline: var(--focus-outline);
+}
+
+.form-label {
+  display: block;
+  margin-bottom: var(--space-8);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-sm);
+}
+
+.form-group {
+  margin-bottom: var(--space-16);
+}
+
+/* Card component */
+.card {
+  background-color: var(--color-surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-card-border);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transition: box-shadow var(--duration-normal) var(--ease-standard);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.card__body {
+  padding: var(--space-16);
+}
+
+.card__header,
+.card__footer {
+  padding: var(--space-16);
+  border-bottom: 1px solid var(--color-card-border-inner);
+}
+
+/* Status indicators - simplified with CSS variables */
+.status {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-6) var(--space-12);
+  border-radius: var(--radius-full);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-sm);
+}
+
+.status--success {
+  background-color: rgba(
+    var(--color-success-rgb, 33, 128, 141),
+    var(--status-bg-opacity)
+  );
+  color: var(--color-success);
+  border: 1px solid
+    rgba(var(--color-success-rgb, 33, 128, 141), var(--status-border-opacity));
+}
+
+.status--error {
+  background-color: rgba(
+    var(--color-error-rgb, 192, 21, 47),
+    var(--status-bg-opacity)
+  );
+  color: var(--color-error);
+  border: 1px solid
+    rgba(var(--color-error-rgb, 192, 21, 47), var(--status-border-opacity));
+}
+
+.status--warning {
+  background-color: rgba(
+    var(--color-warning-rgb, 168, 75, 47),
+    var(--status-bg-opacity)
+  );
+  color: var(--color-warning);
+  border: 1px solid
+    rgba(var(--color-warning-rgb, 168, 75, 47), var(--status-border-opacity));
+}
+
+.status--info {
+  background-color: rgba(
+    var(--color-info-rgb, 98, 108, 113),
+    var(--status-bg-opacity)
+  );
+  color: var(--color-info);
+  border: 1px solid
+    rgba(var(--color-info-rgb, 98, 108, 113), var(--status-border-opacity));
+}
+
+/* Container layout */
+.container {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: var(--space-16);
+  padding-left: var(--space-16);
+}
+
+@media (min-width: 640px) {
+  .container {
+    max-width: var(--container-sm);
+  }
+}
+@media (min-width: 768px) {
+  .container {
+    max-width: var(--container-md);
+  }
+}
+@media (min-width: 1024px) {
+  .container {
+    max-width: var(--container-lg);
+  }
+}
+@media (min-width: 1280px) {
+  .container {
+    max-width: var(--container-xl);
+  }
+}
+
+/* Utility classes */
+.flex {
+  display: flex;
+}
+.flex-col {
+  flex-direction: column;
+}
+.items-center {
+  align-items: center;
+}
+.justify-center {
+  justify-content: center;
+}
+.justify-between {
+  justify-content: space-between;
+}
+.gap-4 {
+  gap: var(--space-4);
+}
+.gap-8 {
+  gap: var(--space-8);
+}
+.gap-16 {
+  gap: var(--space-16);
+}
+
+.m-0 {
+  margin: 0;
+}
+.mt-8 {
+  margin-top: var(--space-8);
+}
+.mb-8 {
+  margin-bottom: var(--space-8);
+}
+.mx-8 {
+  margin-left: var(--space-8);
+  margin-right: var(--space-8);
+}
+.my-8 {
+  margin-top: var(--space-8);
+  margin-bottom: var(--space-8);
+}
+
+.p-0 {
+  padding: 0;
+}
+.py-8 {
+  padding-top: var(--space-8);
+  padding-bottom: var(--space-8);
+}
+.px-8 {
+  padding-left: var(--space-8);
+  padding-right: var(--space-8);
+}
+.py-16 {
+  padding-top: var(--space-16);
+  padding-bottom: var(--space-16);
+}
+.px-16 {
+  padding-left: var(--space-16);
+  padding-right: var(--space-16);
+}
+
+.block {
+  display: block;
+}
+.hidden {
+  display: none;
+}
+
+/* Accessibility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+:focus-visible {
+  outline: var(--focus-outline);
+  outline-offset: 2px;
+}
+
+/* Dark mode specifics */
+[data-color-scheme="dark"] .btn--outline {
+  border: 1px solid var(--color-border-secondary);
+}
+
+@font-face {
+  font-family: 'FKGroteskNeue';
+  src: url('https://r2cdn.perplexity.ai/fonts/FKGroteskNeue.woff2')
+    format('woff2');
+}
+
+/* END PERPLEXITY DESIGN SYSTEM */
+:root {
+  /* Primitive Color Tokens */
+  --color-white: rgba(255, 255, 255, 1);
+  --color-black: rgba(0, 0, 0, 1);
+  --color-cream-50: rgba(252, 252, 249, 1);
+  --color-cream-100: rgba(255, 255, 253, 1);
+  --color-gray-200: rgba(245, 245, 245, 1);
+  --color-gray-300: rgba(167, 169, 169, 1);
+  --color-gray-400: rgba(119, 124, 124, 1);
+  --color-slate-500: rgba(98, 108, 113, 1);
+  --color-brown-600: rgba(94, 82, 64, 1);
+  --color-charcoal-700: rgba(31, 33, 33, 1);
+  --color-charcoal-800: rgba(38, 40, 40, 1);
+  --color-slate-900: rgba(19, 52, 59, 1);
+  --color-teal-300: rgba(50, 184, 198, 1);
+  --color-teal-400: rgba(45, 166, 178, 1);
+  --color-teal-500: rgba(33, 128, 141, 1);
+  --color-teal-600: rgba(29, 116, 128, 1);
+  --color-teal-700: rgba(26, 104, 115, 1);
+  --color-teal-800: rgba(41, 150, 161, 1);
+  --color-red-400: rgba(255, 84, 89, 1);
+  --color-red-500: rgba(192, 21, 47, 1);
+  --color-orange-400: rgba(230, 129, 97, 1);
+  --color-orange-500: rgba(168, 75, 47, 1);
+
+  /* Custom Gradient Colors */
+  --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --gradient-accent: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  --gradient-success: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  --gradient-bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --gradient-purple-blue: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --gradient-teal: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+  color: #fff;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Animated Background Shapes */
+.bg-shapes {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.shape {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.1;
+  animation: float 20s infinite ease-in-out;
+}
+
+.shape-1 {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(102, 126, 234, 0.3) 0%, rgba(118, 75, 162, 0.1) 100%);
+  top: 10%;
+  left: 10%;
+  animation-delay: 0s;
+  filter: blur(60px);
+}
+
+.shape-2 {
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, rgba(240, 147, 251, 0.25) 0%, rgba(245, 87, 108, 0.1) 100%);
+  top: 60%;
+  right: 15%;
+  animation-delay: 5s;
+  filter: blur(60px);
+}
+
+.shape-3 {
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(79, 172, 254, 0.2) 0%, rgba(0, 242, 254, 0.1) 100%);
+  bottom: 10%;
+  left: 50%;
+  animation-delay: 10s;
+  filter: blur(60px);
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(30px, -30px) scale(1.1);
+  }
+  50% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+  75% {
+    transform: translate(20px, 30px) scale(1.05);
+  }
+}
+
+/* View Management */
+.view {
+  display: none;
+  position: relative;
+  z-index: 1;
+}
+
+.view.active {
+  display: block;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* Navigation Bar */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(15, 12, 41, 0.7);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(102, 126, 234, 0.2);
+  padding: 1rem 2rem;
+  z-index: 1000;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.nav-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+  cursor: pointer;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.nav-link {
+  background: rgba(102, 126, 234, 0.15);
+  border: 1px solid rgba(102, 126, 234, 0.3);
+  color: #fff;
+  padding: 0.6rem 1.2rem;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: 'Poppins', sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.4), transparent);
+  transition: left 0.5s ease;
+}
+
+.nav-link:hover::before {
+  left: 100%;
+}
+
+.nav-link:hover {
+  background: rgba(102, 126, 234, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+  border-color: rgba(102, 126, 234, 0.5);
+}
+
+.logout-btn {
+  background: rgba(255, 84, 89, 0.3);
+  border-color: rgba(255, 84, 89, 0.5);
+}
+
+.logout-btn:hover {
+  background: rgba(255, 84, 89, 0.5);
+}
+
+/* Logo Styling */
+.logo-container {
+  text-align: center;
+  margin-bottom: 30px;
+  animation: logoFadeIn 0.8s ease-out;
+}
+
+.auth-logo {
+  width: 120px;
+  height: 120px;
+  filter: drop-shadow(0 8px 24px rgba(102, 126, 234, 0.4));
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.auth-logo:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 12px 32px rgba(102, 126, 234, 0.6));
+}
+
+.profile-logo {
+  width: 130px;
+  height: 130px;
+  filter: drop-shadow(0 8px 24px rgba(102, 126, 234, 0.4));
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.profile-logo:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 12px 32px rgba(102, 126, 234, 0.6));
+}
+
+.chat-logo {
+  width: 50px;
+  height: 50px;
+  filter: drop-shadow(0 4px 12px rgba(102, 126, 234, 0.4));
+  margin-right: 15px;
+  transition: all 0.3s ease;
+}
+
+.chat-logo:hover {
+  transform: scale(1.08);
+  filter: drop-shadow(0 6px 16px rgba(102, 126, 234, 0.6));
+}
+
+.nav-logo {
+  width: 40px;
+  height: 40px;
+  filter: drop-shadow(0 2px 8px rgba(102, 126, 234, 0.3));
+  margin-right: 12px;
+  transition: all 0.3s ease;
+}
+
+.nav-logo:hover {
+  transform: scale(1.1);
+  filter: drop-shadow(0 4px 12px rgba(102, 126, 234, 0.5));
+}
+
+@keyframes logoFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Logo glow animation for auth and profile pages */
+.auth-logo,
+.profile-logo {
+  animation: logoFadeIn 0.8s ease-out, logoGlow 3s ease-in-out infinite;
+}
+
+@keyframes logoGlow {
+  0%, 100% {
+    filter: drop-shadow(0 8px 24px rgba(102, 126, 234, 0.4));
+  }
+  50% {
+    filter: drop-shadow(0 10px 32px rgba(102, 126, 234, 0.6)) drop-shadow(0 0 20px rgba(118, 75, 162, 0.4));
+  }
+}
+
+/* Heart pulse animation for auth and profile pages */
+.auth-logo .heart-shape,
+.profile-logo .heart-shape {
+  animation: heartbeat 1.5s ease-in-out infinite;
+  transform-origin: center;
+}
+
+@keyframes heartbeat {
+  0%, 100% {
+    transform: scale(1);
+  }
+  10% {
+    transform: scale(1.1);
+  }
+  20% {
+    transform: scale(1);
+  }
+  30% {
+    transform: scale(1.1);
+  }
+  40%, 100% {
+    transform: scale(1);
+  }
+}
+
+/* Pulse line animation for auth and profile pages */
+.auth-logo .pulse-line,
+.profile-logo .pulse-line {
+  animation: pulseFlow 2s ease-in-out infinite;
+  stroke-dasharray: 300;
+  stroke-dashoffset: 300;
+}
+
+@keyframes pulseFlow {
+  0% {
+    stroke-dashoffset: 300;
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 0.6;
+  }
+}
+
+/* Static logo for chat header and nav (no animation) */
+.chat-logo .heart-shape,
+.chat-logo .pulse-line,
+.nav-logo .heart-shape,
+.nav-logo .pulse-line {
+  animation: none;
+}
+
+/* Auth Container */
+.auth-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.auth-card {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(25px);
+  border-radius: 30px;
+  padding: 50px;
+  width: 100%;
+  max-width: 450px;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+.auth-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  margin-top: 0;
+}
+
+.auth-title {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #fff;
+  letter-spacing: -0.5px;
+  background: linear-gradient(135deg, #fff 0%, rgba(255, 255, 255, 0.8) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.auth-subtitle {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.95);
+  font-weight: 400;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.form-group {
+  position: relative;
+}
+
+.form-input {
+  width: 100%;
+  padding: 14px 16px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  font-size: 1rem;
+  font-family: 'Poppins', sans-serif;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  outline: none;
+  position: relative;
+}
+
+/* Password Input Wrapper */
+.password-input-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+
+
+
+/* Password Toggle Eye Icon - Custom CSS Design */
+.password-toggle {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: rgba(102, 126, 234, 0.1);
+  z-index: 10;
+}
+
+.password-toggle:hover {
+  background: rgba(102, 126, 234, 0.25);
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 0 15px rgba(102, 126, 234, 0.4);
+}
+
+.password-toggle:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+/* Custom CSS Eye Icon */
+.eye-icon {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+/* Eye Shape - Open State */
+.eye-icon::before {
+  content: '';
+  position: absolute;
+  width: 22px;
+  height: 12px;
+  border: 2.5px solid #ffffff;
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  background: transparent;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+}
+
+/* Pupil - Open State */
+.eye-icon::after {
+  content: '';
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: #ffffff;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 4px rgba(255, 255, 255, 0.5);
+}
+
+/* Eye Closed State - Horizontal Line with Slash */
+.password-toggle.visible .eye-icon::before {
+  width: 20px;
+  height: 0;
+  border-radius: 0;
+  border: 0;
+  border-top: 2.5px solid #ffffff;
+  transform: translateY(0);
+}
+
+.password-toggle.visible .eye-icon::after {
+  width: 24px;
+  height: 0;
+  border-radius: 0;
+  background: transparent;
+  border-top: 2.5px solid #ffffff;
+  transform: rotate(-45deg);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+}
+
+/* Hover Effects */
+.password-toggle:hover .eye-icon::before {
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.5), 0 0 20px rgba(102, 126, 234, 0.4);
+  border-color: #ffffff;
+}
+
+.password-toggle:hover .eye-icon::after {
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.6), 0 0 12px rgba(102, 126, 234, 0.3);
+}
+
+.form-input:focus {
+  border-color: #667eea;
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.3), 0 8px 24px rgba(102, 126, 234, 0.2);
+  transform: translateY(-1px);
+}
+
+
+
+.btn {
+  padding: 14px 20px;
+  border: none;
+  border-radius: 15px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary {
+  color: #fff;
+}
+
+.btn-gradient {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  box-shadow: 0 8px 24px rgba(102, 126, 234, 0.4), 0 4px 12px rgba(118, 75, 162, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-gradient::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.btn-gradient:hover::before {
+  left: 100%;
+}
+
+.btn-gradient:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 12px 32px rgba(102, 126, 234, 0.5), 0 6px 16px rgba(118, 75, 162, 0.4);
+}
+
+
+
+
+
+.auth-footer {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.auth-footer p {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.95rem;
+}
+
+.auth-link {
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.auth-link:hover {
+  text-decoration: none;
+  color: #667eea;
+  text-shadow: 0 0 10px rgba(102, 126, 234, 0.5);
+  transition: all 0.3s ease;
+}
+
+/* Profile View */
+.profile-container {
+  min-height: 100vh;
+  padding: 6rem 2rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-card {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(25px);
+  border-radius: 30px;
+  padding: 50px;
+  width: 100%;
+  max-width: 800px;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.profile-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  margin-top: 0;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.profile-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #fff;
+}
+
+.profile-subtitle {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.95);
+  font-weight: 400;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.profile-form {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+}
+
+.form-label {
+  display: block;
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.required {
+  color: #ff6b6b;
+  text-shadow: 0 0 8px rgba(255, 85, 85, 0.6);
+  font-weight: 700;
+}
+
+.profile-form .form-input {
+  padding: 14px 16px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  font-size: 1rem;
+  font-family: 'Poppins', sans-serif;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  outline: none;
+}
+
+.profile-form .form-input:focus {
+  border-color: #667eea;
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.3), 0 8px 24px rgba(102, 126, 234, 0.2);
+  transform: translateY(-1px);
+}
+
+.form-select {
+  width: 100%;
+  padding: 14px 16px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  font-size: 1rem;
+  font-family: 'Poppins', sans-serif;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  outline: none;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  padding-right: 3rem;
+}
+
+.form-select option {
+  background: #764ba2;
+  color: #fff;
+}
+
+.form-select:focus {
+  border-color: #667eea;
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.3), 0 8px 24px rgba(102, 126, 234, 0.2);
+  transform: translateY(-1px);
+}
+
+.btn-large {
+  padding: 16px 24px;
+  font-size: 1.2rem;
+  margin-top: 1rem;
+}
+
+/* Chat View */
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.chat-header {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.15) 0%, rgba(118, 75, 162, 0.1) 100%);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(102, 126, 234, 0.2);
+  padding: 1.5rem 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  position: relative;
+}
+
+.chat-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #667eea, #764ba2, transparent);
+  opacity: 0.5;
+}
+
+.chat-header-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 60px;
+}
+
+.chat-header-brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+}
+
+.chat-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+  color: #fff;
+}
+
+.chat-subtitle {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 300;
+  margin-top: 0.3rem;
+  text-align: center;
+}
+
+.chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.chat-messages::-webkit-scrollbar {
+  width: 8px;
+}
+
+.chat-messages::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+.chat-messages::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+}
+
+.chat-messages::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.message {
+  display: flex;
+  margin-bottom: 1rem;
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.message.user {
+  justify-content: flex-end;
+}
+
+.message.bot {
+  justify-content: flex-start;
+}
+
+.message-bubble {
+  max-width: 70%;
+  padding: 1rem 1.5rem;
+  border-radius: 20px;
+  font-size: 1rem;
+  line-height: 1.5;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  word-wrap: break-word;
+}
+
+.message.user .message-bubble {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+  border-bottom-right-radius: 5px;
+  box-shadow: 0 4px 16px rgba(102, 126, 234, 0.3);
+  position: relative;
+}
+
+.message.user .message-bubble::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-bottom: 10px solid rgba(118, 75, 162, 0.5);
+  border-bottom-right-radius: 5px;
+  transform: translate(8px, 8px);
+}
+
+.message.bot .message-bubble {
+  background: rgba(22, 33, 62, 0.8);
+  backdrop-filter: blur(10px);
+  color: #fff;
+  border: 1px solid rgba(102, 126, 234, 0.2);
+  border-left: 3px solid #667eea;
+  border-bottom-left-radius: 5px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.typing-indicator {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 1.5rem;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  width: fit-content;
+  margin-left: 2rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.typing-dot {
+  width: 8px;
+  height: 8px;
+  background: #667eea;
+  border-radius: 50%;
+  animation: typing 1.4s infinite;
+}
+
+.typing-dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typing-dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes typing {
+  0%, 60%, 100% {
+    transform: translateY(0);
+    opacity: 0.7;
+  }
+  30% {
+    transform: translateY(-10px);
+    opacity: 1;
+  }
+}
+
+.chat-input-area {
+  background: linear-gradient(135deg, rgba(22, 33, 62, 0.7) 0%, rgba(15, 12, 41, 0.8) 100%);
+  backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(102, 126, 234, 0.2);
+  padding: 1.5rem 2rem;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.chat-input-area::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #667eea, #764ba2, transparent);
+  opacity: 0.5;
+}
+
+.chat-form {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.chat-input {
+  flex: 1;
+  padding: 1rem 1.5rem;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 25px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  font-size: 1rem;
+  font-family: 'Poppins', sans-serif;
+  outline: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.chat-input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 500;
+}
+
+.chat-input:focus {
+  border-color: #667eea;
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.3), 0 4px 16px rgba(102, 126, 234, 0.2);
+  transform: translateY(-1px);
+}
+
+.chat-send-btn {
+  padding: 14px 24px;
+  border-radius: 15px;
+  border: none;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4), 0 3px 10px rgba(118, 75, 162, 0.3);
+  position: relative;
+  overflow: hidden;
+  font-family: 'Poppins', sans-serif;
+}
+
+.chat-send-btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.4s ease, height 0.4s ease;
+}
+
+.chat-send-btn:active::before {
+  width: 100px;
+  height: 100px;
+}
+
+.chat-send-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(102, 126, 234, 0.5), 0 4px 14px rgba(118, 75, 162, 0.4);
+}
+
+.chat-send-btn:active {
+  transform: scale(0.95);
+}
+
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 1rem;
+  }
+
+  .nav-brand {
+    font-size: 1.2rem;
+  }
+  
+  .nav-logo {
+    width: 35px;
+    height: 35px;
+  }
+
+  .nav-links {
+    gap: 0.5rem;
+  }
+
+  .nav-link {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+  }
+
+  .auth-card {
+    padding: 40px;
+  }
+  
+  .profile-card {
+    padding: 40px;
+  }
+
+  .auth-title,
+  .profile-title {
+    font-size: 2rem;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .chat-messages {
+    padding: 1rem;
+  }
+
+  .message-bubble {
+    max-width: 85%;
+  }
+
+  .chat-input-area {
+    padding: 1rem;
+  }
+
+  .shape {
+    display: none;
+  }
+}
+
+/* Additional Premium Enhancements */
+.auth-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+  transform: rotate(45deg);
+  animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: rotate(45deg) translateY(-100%);
+  }
+  100% {
+    transform: rotate(45deg) translateY(100%);
+  }
+}
+
+.profile-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+  transform: rotate(45deg);
+  animation: shimmer 3s infinite;
+}
+
+/* Enhanced button active states */
+.btn-gradient:active {
+  transform: translateY(-1px) scale(0.98);
+  box-shadow: 0 4px 16px rgba(102, 126, 234, 0.3), 0 2px 8px rgba(118, 75, 162, 0.2);
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Selection styling */
+::selection {
+  background: rgba(102, 126, 234, 0.5);
+  color: #fff;
+}
+
+::-moz-selection {
+  background: rgba(102, 126, 234, 0.5);
+  color: #fff;
+}
+
+/* Placeholder styling */
+.form-input::placeholder {
+  color: rgba(255, 255, 255, 0.65);
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.form-input:focus::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+  transform: translateX(5px);
+}
+
+/* Enhanced typing indicator */
+.typing-indicator {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 1.5rem;
+  background: rgba(22, 33, 62, 0.8);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  width: fit-content;
+  margin-left: 2rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(102, 126, 234, 0.2);
+}
+
+/* Message bubble enhancements */
+.message-bubble {
+  animation: messagePop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes messagePop {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Enhanced nav brand */
+.nav-brand {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 2px 10px rgba(102, 126, 234, 0.5);
+  transition: all 0.3s ease;
+}
+
+.nav-brand:hover {
+  text-shadow: 0 2px 20px rgba(102, 126, 234, 0.8);
+  transform: scale(1.05);
+}
+
+/* Profile header gradient */
+.profile-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(102, 126, 234, 0.2);
+  position: relative;
+}
+
+.profile-header::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #667eea, transparent);
+}
+
+/* Auth header gradient */
+.auth-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  position: relative;
+}
+
+.auth-header::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+  border-radius: 10px;
+}
+
+
+
+/* Enhanced form label */
+.form-label {
+  display: block;
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  transition: all 0.3s ease;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.form-group:focus-within .form-label {
+  color: #ffffff;
+  transform: translateX(2px);
+  text-shadow: 0 2px 8px rgba(102, 126, 234, 0.8), 0 0 15px rgba(102, 126, 234, 0.5);
+}
+
+/* Chat title glow effect */
+.chat-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+  color: #fff;
+  text-shadow: 0 0 20px rgba(102, 126, 234, 0.5);
+  animation: titleGlow 2s ease-in-out infinite;
+}
+
+@keyframes titleGlow {
+  0%, 100% {
+    text-shadow: 0 0 20px rgba(102, 126, 234, 0.5);
+  }
+  50% {
+    text-shadow: 0 0 30px rgba(102, 126, 234, 0.8), 0 0 40px rgba(118, 75, 162, 0.4);
+  }
+}
+
+/* Profile title enhancement */
+.profile-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #fff;
+  letter-spacing: -0.5px;
+  background: linear-gradient(135deg, #fff 0%, rgba(255, 255, 255, 0.8) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@media (max-width: 640px) {
+  .auth-logo {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .profile-logo {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .chat-logo {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+  }
+  
+  .chat-title {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .auth-container,
+  .profile-container {
+    padding: 1rem;
+  }
+
+  .auth-card {
+    padding: 30px;
+  }
+  
+  .profile-card {
+    padding: 30px;
+  }
+
+  .auth-title,
+  .profile-title {
+    font-size: 1.8rem;
+  }
+
+  .nav-brand {
+    font-size: 1rem;
+  }
+
+  .nav-link {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+  }
+}
+</style>
+</head>
+<body>
+    <!-- Animated Background Shapes -->
+    <div class="bg-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav id="navbar" class="navbar hidden">
+        <div class="nav-content">
+            <div class="nav-brand">
+                <svg class="nav-logo" viewBox="0 0 200 180" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="heartGradientNav" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+                            <stop offset="50%" style="stop-color:#764ba2;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#f093fb;stop-opacity:1" />
+                        </linearGradient>
+                        <linearGradient id="pulseGradientNav" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:#4facfe;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#00f2fe;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <!-- Heart Shape -->
+                    <path d="M100,150 C100,150 30,110 30,70 C30,45 45,30 65,30 C80,30 90,40 100,55 C110,40 120,30 135,30 C155,30 170,45 170,70 C170,110 100,150 100,150 Z" fill="url(#heartGradientNav)" stroke="url(#pulseGradientNav)" stroke-width="2"/>
+                    <!-- Pulse Line -->
+                    <polyline points="10,90 40,90 50,60 60,120 70,90 200,90" fill="none" stroke="url(#pulseGradientNav)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span>Wellness Chat</span>
+            </div>
+            <div class="nav-links">
+                <button id="navProfile" class="nav-link">Profile</button>
+                <button id="navChat" class="nav-link">Chat</button>
+                <button id="navLogout" class="nav-link logout-btn">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sign In View -->
+    <div id="signinView" class="view active">
+        <div class="auth-container fade-in">
+            <div class="auth-card">
+                <div class="logo-container">
+                    <svg class="auth-logo" viewBox="0 0 200 180" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="heartGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+                                <stop offset="50%" style="stop-color:#764ba2;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#f093fb;stop-opacity:1" />
+                            </linearGradient>
+                            <linearGradient id="pulseGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" style="stop-color:#4facfe;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#00f2fe;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <!-- Heart Shape -->
+                        <path class="heart-shape" d="M100,150 C100,150 30,110 30,70 C30,45 45,30 65,30 C80,30 90,40 100,55 C110,40 120,30 135,30 C155,30 170,45 170,70 C170,110 100,150 100,150 Z" fill="url(#heartGradient)" stroke="url(#pulseGradient)" stroke-width="2"/>
+                        <!-- Pulse Line -->
+                        <polyline class="pulse-line" points="10,90 40,90 50,60 60,120 70,90 200,90" fill="none" stroke="url(#pulseGradient)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <div class="auth-header">
+                    <h1 class="auth-title">Welcome Back</h1>
+                    <p class="auth-subtitle">Sign in to continue your wellness journey</p>
+                </div>
+                <form id="signinForm" class="auth-form">
+                    <div class="form-group">
+                        <label class="form-label">Email Address</label>
+                        <input type="email" id="signinEmail" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Password</label>
+                        <div class="password-input-wrapper">
+                            <input type="password" id="signinPassword" class="form-input password-input" required>
+                            <!-- <span class="password-toggle" data-target="signinPassword" aria-label="Toggle password visibility">
+                                <span class="eye-icon"></span>
+                            </span> -->
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-gradient">
+                        Sign In
+                    </button>
+                    <div class="auth-footer">
+                        <p>Don't have an account? <a href="#" id="showSignup" class="auth-link">Sign Up</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sign Up View -->
+    <div id="signupView" class="view">
+        <div class="auth-container fade-in">
+            <div class="auth-card">
+                <div class="logo-container">
+                    <svg class="auth-logo" viewBox="0 0 200 180" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="heartGradient2" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+                                <stop offset="50%" style="stop-color:#764ba2;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#f093fb;stop-opacity:1" />
+                            </linearGradient>
+                            <linearGradient id="pulseGradient2" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" style="stop-color:#4facfe;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#00f2fe;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <!-- Heart Shape -->
+                        <path class="heart-shape" d="M100,150 C100,150 30,110 30,70 C30,45 45,30 65,30 C80,30 90,40 100,55 C110,40 120,30 135,30 C155,30 170,45 170,70 C170,110 100,150 100,150 Z" fill="url(#heartGradient2)" stroke="url(#pulseGradient2)" stroke-width="2"/>
+                        <!-- Pulse Line -->
+                        <polyline class="pulse-line" points="10,90 40,90 50,60 60,120 70,90 200,90" fill="none" stroke="url(#pulseGradient2)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <div class="auth-header">
+                    <h1 class="auth-title">Create Account</h1>
+                    <p class="auth-subtitle">Start your wellness journey today</p>
+                </div>
+                <form id="signupForm" class="auth-form">
+                    <div class="form-group">
+                        <label class="form-label">Full Name</label>
+                        <input type="text" id="signupName" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Email Address</label>
+                        <input type="email" id="signupEmail" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Password</label>
+                        <div class="password-input-wrapper">
+                            <input type="password" id="signupPassword" class="form-input password-input" required>
+                            <!-- <span class="password-toggle" data-target="signupPassword" aria-label="Toggle password visibility">
+                                5<span class="eye-icon"></span>
+                            </span> -->
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-gradient">
+                        Create Account
+                    </button>
+                    <div class="auth-footer">
+                        <p>Already have an account? <a href="#" id="showSignin" class="auth-link">Sign In</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Profile View -->
+    <div id="profileView" class="view">
+        <div class="profile-container fade-in">
+            <div class="profile-card">
+                <div class="logo-container">
+                    <svg class="profile-logo" viewBox="0 0 200 180" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="heartGradient3" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+                                <stop offset="50%" style="stop-color:#764ba2;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#f093fb;stop-opacity:1" />
+                            </linearGradient>
+                            <linearGradient id="pulseGradient3" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" style="stop-color:#4facfe;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#00f2fe;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <!-- Heart Shape -->
+                        <path class="heart-shape" d="M100,150 C100,150 30,110 30,70 C30,45 45,30 65,30 C80,30 90,40 100,55 C110,40 120,30 135,30 C155,30 170,45 170,70 C170,110 100,150 100,150 Z" fill="url(#heartGradient3)" stroke="url(#pulseGradient3)" stroke-width="2"/>
+                        <!-- Pulse Line -->
+                        <polyline class="pulse-line" points="10,90 40,90 50,60 60,120 70,90 200,90" fill="none" stroke="url(#pulseGradient3)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <div class="profile-header">
+                    <h1 class="profile-title">Your Profile</h1>
+                    <p class="profile-subtitle">Tell us about yourself to personalize your experience</p>
+                </div>
+                <form id="profileForm" class="profile-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">First Name <span class="required">*</span></label>
+                            <input type="text" id="firstName" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Last Name <span class="required">*</span></label>
+                            <input type="text" id="lastName" class="form-input" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Age <span class="required">*</span></label>
+                            <input type="number" id="age" class="form-input" min="0" max="120" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Weight (kg) <span class="required">*</span></label>
+                            <input type="number" id="weight" class="form-input" min="0" max="500" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Preferred Language <span class="required">*</span></label>
+                        <select id="language" class="form-select" required>
+                            <option value="">Select your language</option>
+                            <option value="english">English</option>
+                            <option value="telugu">Telugu (తెలుగు)</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-gradient btn-large">
+                        Save Profile
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chat View -->
+    <div id="chatView" class="view">
+        <div class="chat-container">
+            <div class="chat-header">
+                <div class="chat-header-content">
+                    <div>
+                        <div class="chat-header-brand">
+                            <svg class="chat-logo" viewBox="0 0 200 180" xmlns="http://www.w3.org/2000/svg">
+                                <defs>
+                                    <linearGradient id="heartGradientChat" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+                                        <stop offset="50%" style="stop-color:#764ba2;stop-opacity:1" />
+                                        <stop offset="100%" style="stop-color:#f093fb;stop-opacity:1" />
+                                    </linearGradient>
+                                    <linearGradient id="pulseGradientChat" x1="0%" y1="0%" x2="100%" y2="0%">
+                                        <stop offset="0%" style="stop-color:#4facfe;stop-opacity:1" />
+                                        <stop offset="100%" style="stop-color:#00f2fe;stop-opacity:1" />
+                                    </linearGradient>
+                                </defs>
+                                <!-- Heart Shape -->
+                                <path d="M100,150 C100,150 30,110 30,70 C30,45 45,30 65,30 C80,30 90,40 100,55 C110,40 120,30 135,30 C155,30 170,45 170,70 C170,110 100,150 100,150 Z" fill="url(#heartGradientChat)" stroke="url(#pulseGradientChat)" stroke-width="2"/>
+                                <!-- Pulse Line -->
+                                <polyline points="10,90 40,90 50,60 60,120 70,90 200,90" fill="none" stroke="url(#pulseGradientChat)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <h1 class="chat-title">Wellness Chatbot</h1>
+                        </div>
+                        <p class="chat-subtitle" id="chatSubtitle">Your personal health companion</p>
+                    </div>
+                </div>
+            </div>
+            <div class="chat-messages" id="chatMessages">
+                <!-- Messages will be appended here -->
+            </div>
+            <div class="typing-indicator hidden" id="typingIndicator">
+                <div class="typing-dot"></div>
+                <div class="typing-dot"></div>
+                <div class="typing-dot"></div>
+            </div>
+            <div class="chat-input-area">
+                <form id="chatForm" class="chat-form">
+                    <input type="text" id="chatInput" class="chat-input" placeholder="Type your message..." required autocomplete="off">
+                    <button type="submit" class="chat-send-btn">
+                        Send
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+<script>
+// State management using JavaScript variables (in-memory storage)
+let currentUser = null;
+let currentProfile = null;
+let currentView = 'signin';
+let demoUser = null;
+let demoProfile = null;
+
+// Initialize app on load
+document.addEventListener('DOMContentLoaded', () => {
+    initializeApp();
+});
+
+function initializeApp() {
+    // Load user data from memory
+    loadUserData();
+    
+    // Set up event listeners
+    setupEventListeners();
+    
+    // Determine initial view
+    if (currentUser) {
+        loadProfile();
+        if (currentProfile && currentProfile.firstName) {
+            showView('chat');
+            greetUser();
+        } else {
+            showView('profile');
+        }
+    } else {
+        showView('signin');
+    }
+}
+
+function loadUserData() {
+    if (demoUser) {
+        currentUser = demoUser;
+    }
+}
+
+function loadProfile() {
+    if (demoProfile) {
+        currentProfile = demoProfile;
+        hydrateProfileForm();
+    }
+}
+
+function setupEventListeners() {
+    // Sign in/up navigation
+    document.getElementById('showSignup')?.addEventListener('click', (e) => {
+        e.preventDefault();
+        showView('signup');
+    });
+    
+    document.getElementById('showSignin')?.addEventListener('click', (e) => {
+        e.preventDefault();
+        showView('signin');
+    });
+    
+    // Form submissions
+    document.getElementById('signinForm')?.addEventListener('submit', handleSignIn);
+    document.getElementById('signupForm')?.addEventListener('submit', handleSignUp);
+    document.getElementById('profileForm')?.addEventListener('submit', handleProfileSave);
+    document.getElementById('chatForm')?.addEventListener('submit', handleChatSubmit);
+    
+    // Navigation
+    document.getElementById('navProfile')?.addEventListener('click', () => showView('profile'));
+    document.getElementById('navChat')?.addEventListener('click', () => showView('chat'));
+    document.getElementById('navLogout')?.addEventListener('click', handleLogout);
+    
+    // Password toggle functionality
+    setupPasswordToggles();
+}
+
+function setupPasswordToggles() {
+    // Get all password toggle buttons
+    const toggleButtons = document.querySelectorAll('.password-toggle');
+    
+    toggleButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const targetId = this.getAttribute('data-target');
+            const passwordInput = document.getElementById(targetId);
+            
+            if (passwordInput) {
+                // Toggle password visibility
+                if (passwordInput.type === 'password') {
+                    passwordInput.type = 'text';
+                    this.classList.add('visible');
+                    this.setAttribute('aria-label', 'Hide password');
+                } else {
+                    passwordInput.type = 'password';
+                    this.classList.remove('visible');
+                    this.setAttribute('aria-label', 'Show password');
+                }
+            }
+        });
+    });
+}
+
+function showView(viewName) {
+    // Check authentication for protected views
+    if (viewName === 'chat' && (!currentUser || !window.currentSession)) {
+        console.warn('Attempting to access chat without authentication, redirecting to signin');
+        showView('signin');
+        return;
+    }
+    
+    if (viewName === 'profile' && !currentUser) {
+        console.warn('Attempting to access profile without authentication, redirecting to signin');
+        showView('signin');
+        return;
+    }
+    
+    // Hide all views
+    document.querySelectorAll('.view').forEach(view => {
+        view.classList.remove('active');
+    });
+    
+    // Show selected view
+    const targetView = document.getElementById(`${viewName}View`);
+    if (targetView) {
+        targetView.classList.add('active');
+    }
+    
+    // Show/hide navbar
+    const navbar = document.getElementById('navbar');
+    if (viewName === 'signin' || viewName === 'signup') {
+        navbar?.classList.add('hidden');
+    } else {
+        navbar?.classList.remove('hidden');
+    }
+    
+    currentView = viewName;
+}
+
+function handleSignIn(e) {
+    e.preventDefault();
+    
+    const email = document.getElementById('signinEmail').value;
+    const password = document.getElementById('signinPassword').value;
+    
+  // Call backend login endpoint
+  loginUser(email, password)
+    .then(res => {
+      if (res && res.success) {
+        // Set current user from backend response
+        currentUser = {
+          user_id: res.user_id,
+          username: res.username || '',
+          email: res.email,
+          firstName: res.first_name || ''
+        };
+        localStorage.setItem('currentUser', JSON.stringify(currentUser));
+        console.log('User logged in and saved:', currentUser);
+
+        // Create a new session on the server and wait for it
+        startNewSession(currentUser.user_id)
+          .then(() => {
+            // Set a minimal profile and go to chat
+            currentProfile = { firstName: currentUser.firstName, language: 'en' };
+            localStorage.setItem('currentProfile', JSON.stringify(currentProfile));
+            showView('chat');
+            greetUser();
+          })
+          .catch(err => {
+            console.error('Failed to start session', err);
+            // Still proceed to chat but session-backed storage may be unavailable
+            currentProfile = { firstName: currentUser.firstName, language: 'en' };
+            localStorage.setItem('currentProfile', JSON.stringify(currentProfile));
+            showView('chat');
+            greetUser();
+          });
+      } else {
+        alert(res.message || 'Invalid email or password');
+      }
+    })
+    .catch(err => {
+      console.error('Login error', err);
+      // If login failed due to server unreachable, fallback to a demo user so UI can proceed
+      try {
+        console.warn('Falling back to demo user due to login error');
+        demoUser = { user_id: `demo-${Date.now()}`, email: email, username: email.split('@')[0], firstName: email.split('@')[0] };
+        currentUser = demoUser;
+        // create a local session (startNewSession will fallback if backend not reachable)
+        startNewSession(currentUser.user_id)
+          .then(() => {
+            currentProfile = demoProfile || { firstName: currentUser.firstName, language: 'en' };
+            showView('chat');
+            greetUser();
+            alert('Server unreachable — entered demo mode.');
+          })
+          .catch(sessionErr => {
+            console.error('Session start failed in fallback', sessionErr);
+            // Even if session start fails, continue to chat locally
+            currentProfile = demoProfile || { firstName: currentUser.firstName, language: 'en' };
+            showView('chat');
+            greetUser();
+            alert('Server unreachable — entered demo mode.');
+          });
+      } catch (fallbackErr) {
+        console.error('Fallback error', fallbackErr);
+        alert('Login failed. Check server logs.');
+      }
+    });
+}
+
+function handleSignUp(e) {
+    e.preventDefault();
+    
+    const name = document.getElementById('signupName').value;
+    const email = document.getElementById('signupEmail').value;
+    const password = document.getElementById('signupPassword').value;
+    
+  // Call backend register endpoint with diagnostics
+  const firstName = name.split(' ')[0] || '';
+  const lastName = name.split(' ').slice(1).join(' ') || '';
+  console.debug('Signing up user', { name, email, firstName, lastName });
+
+  registerUser(name, email, password, firstName, lastName)
+    .then(res => {
+      console.debug('registerUser response', res);
+      if (res && res.success) {
+        // Set current user and save to localStorage
+        currentUser = { user_id: res.user_id, username: name, email: email, firstName: firstName };
+        localStorage.setItem('currentUser', JSON.stringify(currentUser));
+        console.log('User registered and saved:', currentUser);
+        
+        // Start session then go to profile
+        return startNewSession(currentUser.user_id)
+          .then(() => {
+            // Clear form
+            document.getElementById('signupForm').reset();
+            // Go to profile view to allow completing profile
+            currentProfile = { firstName: currentUser.firstName, language: 'en' };
+            localStorage.setItem('currentProfile', JSON.stringify(currentProfile));
+            showView('profile');
+          })
+          .catch(err => {
+            console.error('Failed to start session after signup', err);
+            document.getElementById('signupForm').reset();
+            currentProfile = { firstName: currentUser.firstName, language: 'en' };
+            localStorage.setItem('currentProfile', JSON.stringify(currentProfile));
+            showView('profile');
+          });
+      } else {
+        // If server returned a message object, show it; otherwise generic
+        alert((res && res.message) ? `Signup failed: ${res.message}` : 'Signup failed');
+      }
+    })
+    .catch(err => {
+      console.error('Signup error', err);
+      // Simulate successful signup for offline/demo mode
+      currentUser = { user_id: Date.now(), username: name, email: email, firstName: firstName };
+      localStorage.setItem('currentUser', JSON.stringify(currentUser));
+      currentProfile = { firstName: currentUser.firstName, language: 'en' };
+      localStorage.setItem('currentProfile', JSON.stringify(currentProfile));
+      document.getElementById('signupForm').reset();
+      showView('profile');
+      alert('Signup simulated (server offline). Proceed to chat.');
+    });
+}
+
+function handleProfileSave(e) {
+    e.preventDefault();
+    
+    const firstName = document.getElementById('firstName').value;
+    const lastName = document.getElementById('lastName').value;
+    const age = document.getElementById('age').value;
+    const weight = document.getElementById('weight').value;
+    const language = document.getElementById('language').value;
+    
+    const profile = { firstName, lastName, age, weight, language };
+    demoProfile = profile;
+    currentProfile = profile;
+    localStorage.setItem('currentProfile', JSON.stringify(currentProfile));
+    
+    // Go to chat
+    showView('chat');
+    greetUser();
+}
+
+function hydrateProfileForm() {
+    if (!currentProfile) return;
+    
+    document.getElementById('firstName').value = currentProfile.firstName || '';
+    document.getElementById('lastName').value = currentProfile.lastName || '';
+    document.getElementById('age').value = currentProfile.age || '';
+    document.getElementById('weight').value = currentProfile.weight || '';
+    document.getElementById('language').value = currentProfile.language || '';
+}
+
+function handleLogout() {
+    // Clear current session
+    currentUser = null;
+    currentProfile = null;
+    window.currentSession = null;
+    
+    // Clear localStorage
+    localStorage.removeItem('currentUser');
+    localStorage.removeItem('currentSession');
+    localStorage.removeItem('currentProfile');
+    
+    // Clear chat messages
+    const chatMessages = document.getElementById('chatMessages');
+    if (chatMessages) {
+        chatMessages.innerHTML = '';
+    }
+    
+    // Clear forms
+    document.getElementById('signinForm')?.reset();
+    document.getElementById('chatForm')?.reset();
+    
+    // Go to signin
+    showView('signin');
+}
+
+function greetUser() {
+    if (!currentProfile) return;
+    
+    const chatMessages = document.getElementById('chatMessages');
+    const chatSubtitle = document.getElementById('chatSubtitle');
+    
+    // Clear previous messages
+    chatMessages.innerHTML = '';
+    
+    // Update subtitle
+    if (chatSubtitle) {
+        chatSubtitle.textContent = `Welcome, ${currentProfile.firstName}!`;
+    }
+    
+    // Create greeting message based on language
+    let greetingText = '';
+    if (currentProfile.language === 'telugu') {
+        greetingText = `స్వాగతం, ${currentProfile.firstName}. మీ ఆరోగ్య ప్రయాణంలో నేను ఎలా సహాయపడగలను?`;
+    } else {
+        greetingText = `Welcome, ${currentProfile.firstName}. How can I support your wellness today?`;
+    }
+    
+    addBotMessage(greetingText);
+}
+
+// Language detection and disclaimer mapping
+const disclaimers = {
+    'en': '⚠️ This information is for educational purposes only. Please consult a healthcare professional for diagnosis or treatment.',
+    'hi': '⚠️ यह जानकारी केवल शैक्षणिक उद्देश्यों के लिए है। निदान या उपचार के लिए किसी स्वास्थ्य सेवा पेशेवर से सलाह लें।',
+    'te': '⚠️ ఈ సమాచారం విద్యా ప్రయోజనాల కోసం మాత్రమే. నిర్ధారణ లేదా చికిత్సకు ఆరోగ్యసేవ నిపుణుడిని సంప్రదించండి.',
+  
+    
+};
+
+// Database integration functions
+function saveMessageToDatabase(userId, sessionId, sender, message, language) {
+    const data = {
+        session_id: sessionId,
+        user_id: userId,
+        sender: sender,
+        message: message,
+        language: language
+    };
+    
+    fetch('http://127.0.0.1:8001/save_message', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            console.log(`Message saved with ID: ${data.message_id}`);
+        } else {
+            console.error('Failed to save message:', data.message);
+        }
+    })
+    .catch(error => {
+        console.error('Error saving message:', error);
+    });
+}
+
+function startNewSession(userId) {
+    console.debug('startNewSession called with userId:', userId);
+    return fetch(`http://127.0.0.1:8001/start_session?user_id=${userId}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    })
+    .then(response => {
+        console.debug('startNewSession response status:', response.status);
+        return response.json();
+    })
+    .then(data => {
+        console.debug('startNewSession response data:', data);
+        if (data.success) {
+            window.currentSession = { session_id: data.session_id };
+            localStorage.setItem('currentSession', JSON.stringify(window.currentSession));
+            console.log(`Session started and saved: ${data.session_id}`);
+        } else {
+            console.error('startNewSession failed:', data.message);
+        }
+        return data;
+    })
+    .catch(error => {
+        console.error('Error starting session:', error);
+        throw error;
+    });
+}
+
+function registerUser(username, email, password, firstName, lastName) {
+    const data = {
+        username: username,
+        email: email,
+        password: password,
+        first_name: firstName,
+        last_name: lastName
+    };
+  console.debug('registerUser request', data);
+
+  return fetch('http://127.0.0.1:8001/register', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data)
+  })
+  .then(async response => {
+    console.debug('registerUser response status:', response.status);
+    const text = await response.text();
+    console.debug('registerUser response text:', text);
+    let json;
+    try {
+      json = text ? JSON.parse(text) : {};
+    } catch (parseErr) {
+      console.error('registerUser: non-JSON response', text);
+      throw new Error('Server returned non-JSON response');
+    }
+    if (!response.ok) {
+      const msg = json && json.message ? json.message : `HTTP ${response.status}`;
+      throw new Error(msg);
+    }
+    return json;
+  })
+  .catch(err => {
+    console.error('registerUser error', err);
+    throw err;
+  });
+}
+
+function loginUser(email, password) {
+    const data = {
+        email: email,
+        password: password
+    };
+  console.debug('loginUser request', data);
+
+  return fetch('http://127.0.0.1:8001/login', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data)
+  })
+  .then(async response => {
+    const text = await response.text();
+    let json;
+    try {
+      json = text ? JSON.parse(text) : {};
+    } catch (parseErr) {
+      console.error('loginUser: non-JSON response', text);
+      throw new Error('Server returned non-JSON response');
+    }
+    if (!response.ok) {
+      const msg = json && json.message ? json.message : `HTTP ${response.status}`;
+      throw new Error(msg);
+    }
+    return json;
+  })
+  .catch(err => {
+    console.error('loginUser error', err);
+    throw err;
+  });
+}
+
+function detectLanguage(text) {
+    // Simple language detection based on script patterns
+    if (/[\u0900-\u097F]/.test(text)) return 'hi'; // Hindi
+    if (/[\u0C00-\u0C7F]/.test(text)) return 'te'; // Telugu
+    
+    if (/^[a-z\s.,!?'-]+$/i.test(text)) {
+        // Try to detect based on common words
+        const lowerText = text.toLowerCase();
+        if (lowerText.match(/\b(bonjour|merci|s'il vous plaît|comment)\b/)) return 'fr';
+        if (lowerText.match(/\b(hola|gracias|por favor|cómo)\b/)) return 'es';
+        if (lowerText.match(/\b(hallo|danke|bitte|wie)\b/)) return 'de';
+    }
+    return 'en'; // Default to English
+}
+
+function handleChatSubmit(e) {
+    e.preventDefault();
+    
+    const input = document.getElementById('chatInput');
+    const message = input.value.trim();
+    
+    if (!message) return;
+    
+    // Ensure we have a valid session
+    if (!currentUser) {
+        alert('Please sign in first');
+        showView('signin');
+        return;
+    }
+    
+    if (!window.currentSession || !window.currentSession.session_id) {
+        console.log('No active session, starting new session...');
+        startNewSession(currentUser.user_id)
+            .then(() => {
+                // Now proceed with the message
+                processChatMessage(message);
+            })
+            .catch(err => {
+                console.error('Failed to start session for chat', err);
+                alert('Unable to start chat session. Please try signing in again.');
+                showView('signin');
+            });
+        return;
+    }
+    
+    // Proceed with message
+    processChatMessage(message);
+}
+
+function processChatMessage(message) {
+    // Detect language from user input
+    const detectedLanguage = detectLanguage(message);
+    window.currentLanguage = detectedLanguage;
+    
+    // Add user message
+    addUserMessage(message);
+    
+    // Save user message to database
+    saveMessageToDatabase(currentUser.user_id, window.currentSession.session_id, 'user', message, detectedLanguage);
+    
+    // Clear input
+    document.getElementById('chatInput').value = '';
+    
+    // Show typing indicator
+    showTypingIndicator();
+    
+    // Send to Rasa or Groq backend
+    sendToRasa(message);
+}
+
+function addUserMessage(text) {
+    const chatMessages = document.getElementById('chatMessages');
+    
+    const messageDiv = document.createElement('div');
+    messageDiv.className = 'message user';
+    messageDiv.style.opacity = '0';
+    messageDiv.style.transform = 'translateY(20px)';
+    
+    const bubble = document.createElement('div');
+    bubble.className = 'message-bubble';
+    bubble.textContent = text;
+    
+    messageDiv.appendChild(bubble);
+    chatMessages.appendChild(messageDiv);
+    
+    // Animate in
+    setTimeout(() => {
+        messageDiv.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+        messageDiv.style.opacity = '1';
+        messageDiv.style.transform = 'translateY(0)';
+    }, 10);
+    
+    // Scroll to bottom
+    scrollToBottom();
+}
+
+function addBotMessage(text) {
+    const chatMessages = document.getElementById('chatMessages');
+    
+    const messageDiv = document.createElement('div');
+    messageDiv.className = 'message bot';
+    messageDiv.style.opacity = '0';
+    messageDiv.style.transform = 'translateX(-20px)';
+    
+    const bubble = document.createElement('div');
+    bubble.className = 'message-bubble';
+    
+    // Determine whether to show the disclaimer. By default we only show it
+    // for responses that are tips/health advice (so greet messages won't show it).
+    const lang = window.currentLanguage || 'en';
+    const disclaimer = disclaimers[lang] || disclaimers['en'];
+
+    function isTipMessage(t) {
+      if (!t) return false;
+      const s = t.toLowerCase();
+      // common keywords that indicate advice/tips
+      return /\b(tip|tips|suggest|advice|precaution|monitor|triage|medication|reminder)\b/.test(s);
+    }
+
+    if (isTipMessage(text)) {
+      bubble.innerHTML = `<div>${text}</div><div style="margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.2); font-size: 11px; opacity: 0.8; color: #ffa500;">${disclaimer}</div>`;
+    } else {
+      bubble.innerHTML = `<div>${text}</div>`;
+    }
+    
+    messageDiv.appendChild(bubble);
+    chatMessages.appendChild(messageDiv);
+    
+    // Animate in
+    setTimeout(() => {
+        messageDiv.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+        messageDiv.style.opacity = '1';
+        messageDiv.style.transform = 'translateX(0)';
+    }, 10);
+    
+    // Scroll to bottom
+    scrollToBottom();
+}
+
+function showTypingIndicator() {
+    const indicator = document.getElementById('typingIndicator');
+    if (indicator) {
+        indicator.classList.remove('hidden');
+        scrollToBottom();
+    }
+}
+
+function hideTypingIndicator() {
+    const indicator = document.getElementById('typingIndicator');
+    if (indicator) {
+        indicator.classList.add('hidden');
+    }
+}
+
+function isGreeting(text) {
+    const greetings = ['hai', 'hello', 'hi', 'hey', 'greetings', 'good morning', 'good afternoon', 'good evening', 'hola', 'bonjour', 'guten tag', 'ciao', 'salut'];
+    const lowerText = text.toLowerCase().trim();
+    return greetings.some(g => lowerText.includes(g) || lowerText === g);
+}
+
+function getDisclaimer(lang) {
+    const disclaimers = {
+        'en': "In case of a medical emergency, do not rely on this chatbot. Call your local emergency number or seek immediate professional care.",
+        'es': "En caso de emergencia médica, no confíe en este chatbot. Llame al número de emergencias local o busque atención profesional inmediata.",
+        'fr': "En cas d'urgence médicale, ne vous fiez pas à ce chatbot. Appelez le numéro d'urgence local ou consultez un professionnel de la santé immédiatement.",
+        'de': "Im Falle eines medizinischen Notfalls verlassen Sie sich nicht auf diesen Chatbot. Rufen Sie die lokale Notrufnummer an oder suchen Sie sofort professionelle Hilfe.",
+        'it': "In caso di emergenza medica, non fare affidamento su questo chatbot. Chiama il numero di emergenza locale o cerca assistenza professionale immediata.",
+        'pt': "Em caso de emergência médica, não confie neste chatbot. Ligue para o número de emergência local ou procure atendimento profissional imediato.",
+        'zh': "如果发生医疗紧急情况，请勿依赖此聊天机器人。请拨打当地紧急电话或立即寻求专业护理。",
+        'ja': "医療緊急事態の場合は、このチャットボットに頼らないでください。地元の緊急電話番号に電話するか、すぐに専門的なケアを求めてください。",
+        'ko': "의료 응급 상황에서는 이 챗봇을 신뢰하지 마십시오. 지역 응급 번호로 전화하거나 즉시 전문적인 치료를 받으십시오.",
+        'ar': "في حالة الطوارئ الطبية، لا تعتمد على هذا الدردشة. اتصل برقم الطوارئ المحلي أو اطلب رعاية مهنية فورية.",
+        'ru': "В случае медицинской чрезвычайной ситуации не полагайтесь на этот чат-бот. Позвоните по местному номеру экстренной помощи или обратитесь за немедленной профессиональной помощью.",
+        'hi': "चिकित्सा आपातकाल की स्थिति में, इस चैटबॉट पर निर्भर न करें। अपने स्थानीय आपातकालीन नंबर पर कॉल करें या तत्काल पेशेवर देखभाल प्राप्त करें।"
+    };
+    return disclaimers[lang] || disclaimers['en'];
+}
+
+function sendToRasa(message) {
+    const rasaUrl = 'http://localhost:5005/webhooks/rest/webhook';
+    
+    fetch(rasaUrl, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            sender: currentUser?.email || 'user',
+            message: message
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        hideTypingIndicator();
+        
+        if (data && data.length > 0) {
+            data.forEach(msg => {
+                if (msg.text) {
+                    let fullText = msg.text;
+                    if (!isGreeting(msg.text)) {
+                        fullText += '\n\n' + getDisclaimer(window.currentLanguage);
+                    }
+                    addBotMessage(fullText);
+                    // Save bot message to database
+                    if (currentUser && window.currentSession) {
+                        saveMessageToDatabase(currentUser.user_id, window.currentSession.session_id, 'bot', fullText, window.currentLanguage || 'en');
+                    }
+                }
+            });
+        } else {
+            let defaultMsg = 'I received your message. How else can I help you?';
+            if (!isGreeting(defaultMsg)) {
+                defaultMsg += '\n\n' + getDisclaimer(window.currentLanguage);
+            }
+            addBotMessage(defaultMsg);
+            // Save bot message to database
+            if (currentUser && window.currentSession) {
+                saveMessageToDatabase(currentUser.user_id, window.currentSession.session_id, 'bot', defaultMsg, window.currentLanguage || 'en');
+            }
+        }
+    })
+    .catch(async error => {
+    hideTypingIndicator();
+    console.error('Error connecting to Rasa:', error);
+
+    try {
+        // Fallback: call your FastAPI backend (include session_id and user_id)
+        const fallbackResponse = await fetch("http://127.0.0.1:8001/chat", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            session_id: window.currentSession?.session_id || 0,
+            user_id: currentUser?.user_id || 0,
+            message: message,
+            language: window.currentLanguage || 'en'
+          })
+        });
+        const data = await fallbackResponse.json();
+        hideTypingIndicator();
+        let reply = data.reply;
+        if (!isGreeting(reply)) {
+            reply += '\n\n' + getDisclaimer(window.currentLanguage);
+        }
+        addBotMessage(reply);  // show Groq/FastAPI reply
+        // Save bot message to database
+        if (currentUser && window.currentSession) {
+            saveMessageToDatabase(currentUser.user_id, window.currentSession.session_id, 'bot', reply, window.currentLanguage || 'en');
+        }
+    } catch (fallbackError) {
+        console.error('Error connecting to fallback backend:', fallbackError);
+        hideTypingIndicator();
+        addBotMessage("Sorry, I'm having trouble connecting to both servers. Please try again later.");
+    }
+});
+
+}
+
+function scrollToBottom() {
+    const chatMessages = document.getElementById('chatMessages');
+    if (chatMessages) {
+        setTimeout(() => {
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }, 100);
+    }
+}
+</script>
+</body>
+</html>
