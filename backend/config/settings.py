@@ -8,8 +8,7 @@ load_dotenv()
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.getenv('SECRET_KEY', 'your-secret-key-change-in-production')
-DEBUG = os.getenv('DEBUG', 'False').lower() == 'true'
-IS_VERCEL = os.environ.get('VERCEL') == '1'
+DEBUG = os.getenv('DEBUG', 'True').lower() == 'true'
 ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
@@ -41,7 +40,7 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, '..', 'frontend', 'dist')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -59,9 +58,19 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.environ.get('DATABASE_URL', str(BASE_DIR / 'healthchat.db')),
+        'NAME': str(BASE_DIR / 'healthchat.db'),
     }
 }
+
+DATABASE_URL = os.environ.get('DATABASE_URL')
+if DATABASE_URL:
+    import dj_database_url
+    DATABASES = {
+        'default': dj_database_url.config(
+            default=DATABASE_URL,
+            conn_max_age=600,
+        )
+    }
 
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
@@ -77,6 +86,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
@@ -105,9 +117,6 @@ CORS_ALLOWED_ORIGINS = [
     'http://localhost:5173',
     'http://localhost:3000',
 ]
-if IS_VERCEL:
-    CORS_ALLOWED_ORIGINS.append(f'https://{os.getenv("VERCEL_PROJECT_PRODUCTION_URL", "")}')
-    CORS_ALLOWED_ORIGINS.append(f'https://{os.getenv("VERCEL_URL", "")}')
 CORS_ALLOW_CREDENTIALS = True
 
 GROQ_API_KEY = os.getenv('GROQ_API_KEY')

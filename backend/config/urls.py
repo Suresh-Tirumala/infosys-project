@@ -1,11 +1,20 @@
 import os
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, re_path
 from django.conf import settings
 from django.conf.urls.static import static
+from django.http import HttpResponse
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny
+
+
+def serve_spa(request, **kwargs):
+    index_path = os.path.join(settings.BASE_DIR, '..', 'frontend', 'dist', 'index.html')
+    if os.path.exists(index_path):
+        with open(index_path, 'r') as f:
+            return HttpResponse(f.read(), content_type='text/html')
+    return HttpResponse('Not Found', status=404)
 
 
 @api_view(['GET'])
@@ -67,6 +76,7 @@ urlpatterns = [
     path('api/health/', health_check, name='health-check'),
     path('api/categories/', get_health_categories, name='health-categories'),
     path('', root, name='root'),
+    re_path(r'^(?!api/).*$', serve_spa, name='spa'),
 ]
 
 if settings.DEBUG:
