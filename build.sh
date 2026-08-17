@@ -3,7 +3,7 @@
 set -e
 
 # Install Python dependencies
-pip install -r requirements.txt
+pip install -r backend/requirements.txt
 
 # Install and build React frontend
 cd frontend
