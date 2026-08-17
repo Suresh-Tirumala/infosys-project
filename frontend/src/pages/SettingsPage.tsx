@@ -25,7 +25,7 @@ const SettingsPage: React.FC = () => {
     try {
       const res = await api.get('/settings');
       setSettings(res.data);
-    } catch (err) {
+    } catch (err: any) {
     }
   };
 
@@ -35,7 +35,7 @@ const SettingsPage: React.FC = () => {
     try {
       await api.put('/settings', settings);
       setMessage('Settings saved successfully');
-    } catch (err) {
+    } catch (err: any) {
       setMessage('Failed to save settings');
     } finally {
       setSaving(false);
@@ -47,7 +47,7 @@ const SettingsPage: React.FC = () => {
     try {
       await api.delete('/settings/conversations');
       setMessage('All conversations deleted');
-    } catch (err) {
+    } catch (err: any) {
       setMessage('Failed to delete conversations');
     }
   };
@@ -57,7 +57,7 @@ const SettingsPage: React.FC = () => {
     try {
       await api.delete('/settings/data');
       setMessage('All data deleted');
-    } catch (err) {
+    } catch (err: any) {
       setMessage('Failed to delete data');
     }
   };
@@ -67,7 +67,7 @@ const SettingsPage: React.FC = () => {
     try {
       await api.delete('/auth/me');
       logout();
-    } catch (err) {
+    } catch (err: any) {
       setMessage('Failed to delete account');
     }
   };

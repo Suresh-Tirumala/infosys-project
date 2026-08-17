@@ -19,7 +19,7 @@ const DocumentUpload: React.FC = () => {
     try {
       const docs = await documentsAPI.list();
       setDocuments(docs);
-    } catch (err) {
+    } catch (err: any) {
     } finally {
       setLoading(false);
     }
@@ -31,7 +31,7 @@ const DocumentUpload: React.FC = () => {
     try {
       const doc = await documentsAPI.upload(acceptedFiles[0]);
       setDocuments(prev => [doc, ...prev]);
-    } catch (err) {
+    } catch (err: any) {
     } finally {
       setUploading(false);
     }
@@ -54,7 +54,7 @@ const DocumentUpload: React.FC = () => {
     try {
       const res = await documentsAPI.askAboutDocument(selectedDoc.id, question);
       setAnswer(res.response);
-    } catch (err) {
+    } catch (err: any) {
       setAnswer('Failed to get answer. Please try again.');
     }
   };
@@ -64,7 +64,7 @@ const DocumentUpload: React.FC = () => {
       await documentsAPI.delete(docId);
       setDocuments(prev => prev.filter(d => d.id !== docId));
       if (selectedDoc?.id === docId) setSelectedDoc(null);
-    } catch (err) {
+    } catch (err: any) {
     }
   };
 

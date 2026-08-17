@@ -16,7 +16,7 @@ const HealthProfileComponent: React.FC = () => {
     try {
       const data = await healthProfileAPI.get();
       setProfile(data);
-    } catch (err) {
+    } catch (err: any) {
     } finally {
       setLoading(false);
     }
@@ -40,7 +40,7 @@ const HealthProfileComponent: React.FC = () => {
       });
       setProfile(updated);
       setMessage('Profile updated successfully');
-    } catch (err) {
+    } catch (err: any) {
       setMessage('Failed to update profile');
     } finally {
       setSaving(false);

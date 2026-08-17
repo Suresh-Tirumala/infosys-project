@@ -33,7 +33,7 @@ const SymptomCheckerPage: React.FC = () => {
       if (response.is_emergency) {
         setShowEmergency(true);
       }
-    } catch (err) {
+    } catch (err: any) {
       console.error('Symptom check error:', err);
       if (err.response) {
         console.error('Backend error response:', err.response.data);
