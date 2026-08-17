@@ -41,7 +41,7 @@ const LandingPage: React.FC = () => {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
             </svg>
           </div>
-          <span className="text-xl font-bold text-gray-900">HealthChat AI</span>
+          <span className="text-xl font-bold text-gray-900">HealthBot AI</span>
         </Link>
         <div className="flex items-center gap-3">
           <Link to="/login" className="text-gray-700 hover:text-primary-600 font-medium text-sm transition-colors">
@@ -93,7 +93,7 @@ const LandingPage: React.FC = () => {
         <div className="mt-16 text-center">
           <div className="bg-white rounded-xl p-6 max-w-2xl mx-auto border border-gray-200 shadow-sm">
             <p className="text-gray-600 text-sm">
-              <strong className="text-gray-800">Disclaimer:</strong> HealthChat AI provides general health
+              <strong className="text-gray-800">Disclaimer:</strong> HealthBot AI provides general health
               information and guidance. It is NOT a substitute for professional medical advice, diagnosis,
               or treatment. Always consult a qualified healthcare provider for medical concerns.
             </p>

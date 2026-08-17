@@ -9,7 +9,7 @@ const TypingIndicator: React.FC = () => {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
           </svg>
         </div>
-        <span className="text-xs font-medium text-gray-500">HealthChat AI is thinking...</span>
+        <span className="text-xs font-medium text-gray-500">HealthBot AI is thinking...</span>
       </div>
       <div className="bg-white border border-gray-200 rounded-2xl rounded-bl-sm px-4 py-3 ml-8 border-l-4 border-l-primary-500">
         <div className="flex items-center gap-1.5">

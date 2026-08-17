@@ -1,4 +1,4 @@
-# HealthChat AI
+# HealthBot AI
 
 AI-powered health assistant providing general health information and guidance.
 

@@ -67,7 +67,7 @@ const DashboardPage: React.FC = () => {
 
         <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 mt-8">
           <p className="text-sm text-amber-800">
-            <strong>Disclaimer:</strong> HealthChat AI provides general health information only.
+            <strong>Disclaimer:</strong> HealthBot AI provides general health information only.
             It is not a substitute for professional medical advice, diagnosis, or treatment.
             Always seek the advice of your physician or other qualified health provider.
           </p>

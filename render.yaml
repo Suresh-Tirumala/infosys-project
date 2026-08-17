@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: healthchat-ai
+    name: healthbot-ai
     runtime: python
     plan: free
     buildCommand: bash build.sh

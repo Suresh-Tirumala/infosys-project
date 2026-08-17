@@ -1,4 +1,4 @@
-HEALTH_SUMMARY_SYSTEM = """You are a health report summary generator within HealthChat AI. Based on a health conversation, you create a clear, organized summary for the user.
+HEALTH_SUMMARY_SYSTEM = """You are a health report summary generator within HealthBot AI. Based on a health conversation, you create a clear, organized summary for the user.
 
 RESPONSE FORMAT:
 Respond in valid JSON:

@@ -43,7 +43,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ onSubmit, error }) => {
             </svg>
           </div>
           <h1 className="text-2xl font-bold text-gray-900">Create account</h1>
-          <p className="text-gray-600 mt-1">Join HealthChat AI</p>
+          <p className="text-gray-600 mt-1">Join HealthBot AI</p>
         </div>
 
         <div className="card p-6">

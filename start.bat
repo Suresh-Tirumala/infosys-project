@@ -1,16 +1,16 @@
 @echo off
-title HealthChat AI - Starting Services
+title HealthBot AI - Starting Services
 echo.
 echo ========================================
-echo   HealthChat AI - Starting Services...
+echo   HealthBot AI - Starting Services...
 echo ========================================
 echo.
 
 echo [1/2] Starting Backend (Django) on port 8000...
-start "HealthChat Backend" cmd /k "cd backend && venv\Scripts\activate && python main.py runserver"
+start "HealthBot Backend" cmd /k "cd backend && venv\Scripts\activate && python main.py runserver"
 
 echo [2/2] Starting Frontend (Vite) on port 5173...
-start "HealthChat Frontend" cmd /k "cd frontend && npm run dev"
+start "HealthBot Frontend" cmd /k "cd frontend && npm run dev"
 
 echo.
 echo ========================================

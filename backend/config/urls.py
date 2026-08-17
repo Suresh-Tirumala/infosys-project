@@ -28,7 +28,7 @@ def serve_spa(request, **kwargs):
 def health_check(request):
     return Response({
         'status': 'ok',
-        'app': 'HealthChat AI',
+        'app': 'HealthBot AI',
         'version': '1.0.0',
         'ai_configured': settings.GROQ_API_KEY is not None,
     })
@@ -61,7 +61,7 @@ def get_health_categories(request):
 @permission_classes([AllowAny])
 def root(request):
     return Response({
-        'name': 'HealthChat AI',
+        'name': 'HealthBot AI',
         'version': '1.0.0',
         'docs': '/docs',
         'api': '/api',

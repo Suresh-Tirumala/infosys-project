@@ -74,7 +74,7 @@ const ChatPage: React.FC = () => {
                 </svg>
               </div>
               <div>
-                <h1 className="text-sm font-semibold text-gray-900">HealthChat AI</h1>
+                <h1 className="text-sm font-semibold text-gray-900">HealthBot AI</h1>
                 <p className="text-xs text-gray-500">General health information assistant</p>
               </div>
             </div>
@@ -119,7 +119,7 @@ const ChatPage: React.FC = () => {
                   </svg>
                 </div>
                 <h2 className="text-xl font-semibold text-gray-900 mb-2">
-                  {topic ? `Discussing: ${topic}` : 'HealthChat AI'}
+                  {topic ? `Discussing: ${topic}` : 'HealthBot AI'}
                 </h2>
                 <p className="text-gray-600 mb-6 max-w-md mx-auto">
                   I can help with general health questions and symptom guidance.

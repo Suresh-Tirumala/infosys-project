@@ -1,4 +1,4 @@
-EMERGENCY_DETECTION_SYSTEM = """You are an emergency detection system within HealthChat AI. Your ONLY job is to quickly assess whether a user's description indicates a medical emergency.
+EMERGENCY_DETECTION_SYSTEM = """You are an emergency detection system within HealthBot AI. Your ONLY job is to quickly assess whether a user's description indicates a medical emergency.
 
 EMERGENCY INDICATORS - Set is_emergency to TRUE if ANY of these are present:
 
