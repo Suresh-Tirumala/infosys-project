@@ -1,0 +1,16 @@
+{
+  "name": "healthchat-ai",
+  "private": true,
+  "version": "1.0.0",
+  "description": "AI-powered health assistant - full stack application",
+  "scripts": {
+    "start": "concurrently -n backend,frontend -c blue,green \"npm run start:backend\" \"npm run start:frontend\"",
+    "start:backend": "cd backend && venv\\Scripts\\activate && python main.py runserver",
+    "start:frontend": "cd frontend && npm run dev",
+    "install:all": "cd frontend && npm install",
+    "setup": "cd frontend && npm install && echo. && echo Setup complete! Run 'npm start' to launch the app."
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
