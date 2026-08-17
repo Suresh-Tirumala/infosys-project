@@ -75,7 +75,6 @@ urlpatterns = [
     path('api/medication/', include('core.urls.medication')),
     path('api/health/', health_check, name='health-check'),
     path('api/categories/', get_health_categories, name='health-categories'),
-    path('', root, name='root'),
     re_path(r'^(?!api/).*$', serve_spa, name='spa'),
 ]
 
