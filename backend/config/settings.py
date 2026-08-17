@@ -8,7 +8,8 @@ load_dotenv()
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.getenv('SECRET_KEY', 'your-secret-key-change-in-production')
-DEBUG = os.getenv('DEBUG', 'True').lower() == 'true'
+DEBUG = os.getenv('DEBUG', 'False').lower() == 'true'
+IS_VERCEL = os.environ.get('VERCEL') == '1'
 ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
@@ -27,6 +28,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -57,7 +59,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'healthchat.db',
+        'NAME': os.environ.get('DATABASE_URL', str(BASE_DIR / 'healthchat.db')),
     }
 }
 
@@ -73,7 +75,8 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_TZ = True
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
@@ -102,7 +105,9 @@ CORS_ALLOWED_ORIGINS = [
     'http://localhost:5173',
     'http://localhost:3000',
 ]
-
+if IS_VERCEL:
+    CORS_ALLOWED_ORIGINS.append(f'https://{os.getenv("VERCEL_PROJECT_PRODUCTION_URL", "")}')
+    CORS_ALLOWED_ORIGINS.append(f'https://{os.getenv("VERCEL_URL", "")}')
 CORS_ALLOW_CREDENTIALS = True
 
 GROQ_API_KEY = os.getenv('GROQ_API_KEY')
