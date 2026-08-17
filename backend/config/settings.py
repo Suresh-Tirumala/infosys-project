@@ -110,7 +110,6 @@ CORS_ALLOWED_ORIGINS = [
 CORS_ALLOW_CREDENTIALS = True
 
 GROQ_API_KEY = os.getenv('GROQ_API_KEY')
-GROQ_MODEL = os.getenv('GROQ_MODEL', 'llama-3.1-8b-instant')
 
 UPLOAD_DIR = os.path.join(BASE_DIR, 'uploads')
 MAX_UPLOAD_SIZE = 10 * 1024 * 1024

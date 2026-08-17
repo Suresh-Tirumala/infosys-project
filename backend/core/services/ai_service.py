@@ -32,7 +32,7 @@ class AIService:
         try:
             full_messages = [{"role": "system", "content": system_prompt}] + messages
             response = self.client.chat.completions.create(
-                model=settings.GROQ_MODEL,
+                model="openai/gpt-oss-20b",
                 messages=full_messages,
                 temperature=temperature,
                 max_tokens=2048,
