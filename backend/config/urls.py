@@ -10,11 +10,17 @@ from rest_framework.permissions import AllowAny
 
 
 def serve_spa(request, **kwargs):
-    index_path = os.path.join(settings.BASE_DIR, '..', 'frontend', 'dist', 'index.html')
-    if os.path.exists(index_path):
-        with open(index_path, 'r') as f:
-            return HttpResponse(f.read(), content_type='text/html')
-    return HttpResponse('Not Found', status=404)
+    # Check multiple possible locations for index.html
+    candidates = [
+        os.path.join(settings.BASE_DIR, '..', 'frontend', 'dist', 'index.html'),
+        os.path.join(settings.BASE_DIR, 'staticfiles', 'frontend', 'index.html'),
+        os.path.join(settings.BASE_DIR, 'static', 'frontend', 'index.html'),
+    ]
+    for index_path in candidates:
+        if os.path.exists(index_path):
+            with open(index_path, 'r') as f:
+                return HttpResponse(f.read(), content_type='text/html')
+    return HttpResponse('Frontend not built. Run: cd frontend && npm run build', status=404)
 
 
 @api_view(['GET'])
